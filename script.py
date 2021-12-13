@@ -2,7 +2,14 @@
 # December 2021
 # runs on Python 3.x on Mac OS 12.0.1
 
-# imports from mido module
+##################
+# import libraries
+##################
+
+# csv module for CSV
+import csv
+
+# mido module for MIDI
 from mido import MetaMessage
 from mido import MidiFile
 
@@ -13,6 +20,11 @@ from mido import MidiFile
 # CSV files
 ###########
 
+def readCSVFile(filename):
+  with open(filename, newline='') as myCSVFile:
+    reader = csv.reader(myCSVFile, delimiter='', quotechar='|')
+    for row in reader:
+      print(', '.join(row))
 
 ############
 # MIDI files
@@ -38,5 +50,5 @@ def printMetaMessages(file):
 # running
 #########
 
-# open a file
+# open a MIDI file
 readMIDIFile("A41emP.mid")
