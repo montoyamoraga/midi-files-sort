@@ -7,11 +7,26 @@ from mido import MetaMessage
 from mido import MidiFile
 
 
+# TODO add arguments for command line
+
+###########
+# CSV files
+###########
+
+
+############
+# MIDI files
+############
+
 
 # open MIDI file
 def readMIDIFile(filename):
 
   myFile = MidiFile(filename)
+
+  return myFile
+
+def printMetaMessages(file):
 
   for i, track in enumerate(myFile.tracks):
     print('Track {}: {}'.format(i, track.name))
@@ -19,12 +34,9 @@ def readMIDIFile(filename):
         if msg.is_meta:
           print(msg)
 
-
-def testing():
-  print("hello world")
-
-# print
-testing()
+#########
+# running
+#########
 
 # open a file
 readMIDIFile("A41emP.mid")
