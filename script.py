@@ -2,11 +2,9 @@
 # December 2021
 # runs on Python 3.x on Mac OS 12.0.1
 
-# import MidiFile from mido module
-from mido import MidiFile
-
-# import M
+# imports from mido module
 from mido import MetaMessage
+from mido import MidiFile
 
 
 # open the file
