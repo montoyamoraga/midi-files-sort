@@ -8,13 +8,12 @@ from mido import MidiFile
 
 
 
+# open MIDI file
+def readMIDIFile(filename):
 
+  myFile = MidiFile(filename)
 
-
-# open the MIDI file
-myFile = MidiFile("A41emP.mid")
-
-for i, track in enumerate(myFile.tracks):
+  for i, track in enumerate(myFile.tracks):
     print('Track {}: {}'.format(i, track.name))
     for msg in track:
         if msg.is_meta:
@@ -24,4 +23,8 @@ for i, track in enumerate(myFile.tracks):
 def testing():
   print("hello world")
 
+# print
 testing()
+
+# open a file
+readMIDIFile("A41emP.mid")
