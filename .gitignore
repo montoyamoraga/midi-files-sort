@@ -1,7 +1,7 @@
 # Apple
 .DS_Store
 
-# Python virtuale environment
+# Python virtual environment
 env/
 
 # midiLibrary project
