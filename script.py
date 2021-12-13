@@ -7,7 +7,11 @@ from mido import MetaMessage
 from mido import MidiFile
 
 
-# open the file
+
+
+
+
+# open the MIDI file
 myFile = MidiFile("A41emP.mid")
 
 for i, track in enumerate(myFile.tracks):
@@ -16,4 +20,8 @@ for i, track in enumerate(myFile.tracks):
         if msg.is_meta:
           print(msg)
 
-print("hello world")
+
+def testing():
+  print("hello world")
+
+testing()
