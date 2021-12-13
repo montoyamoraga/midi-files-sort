@@ -3,3 +3,6 @@
 
 # Python virtuale environment
 env/
+
+# midiLibrary project
+midiLibrary/
