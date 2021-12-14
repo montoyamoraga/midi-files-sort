@@ -24,13 +24,15 @@ from mido import MidiFile
 ###################
 
 libraryPathOriginal = "library"
-libraryPathModified = "libraryNew"
+libraryPathNew = "libraryNew"
 
 ##############################
 # create files and directories
 ##############################
 
-Path("./" + libraryPathModified).mkdir(parents=True, exist_ok=True)
+# if it doesnt exist, create new directory for storing the modified library
+def createDirectories():
+  Path("./" + libraryPathNew).mkdir(parents=True, exist_ok=True)
 
 ###########
 # CSV files
@@ -45,7 +47,6 @@ def readCSVFile(filename):
 ############
 # MIDI files
 ############
-
 
 # open MIDI file
 def readMIDIFile(filename):
@@ -66,8 +67,11 @@ def printMetaMessages(file):
 # running
 #########
 
+# create directories
+createDirectories()
+
 # open a MIDI file
 readMIDIFile("A41emP.mid")
 
 # print the 1th argument of the command line
-print(sys.argv[1])
+print(sys.argv[1:])
