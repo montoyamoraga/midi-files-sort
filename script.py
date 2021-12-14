@@ -26,6 +26,8 @@ from mido import MidiFile
 libraryPathOriginal = "library"
 libraryPathNew = "libraryNew"
 
+libraryCSVFileName = "libraryNew.csv"
+
 ##############################
 # create files and directories
 ##############################
@@ -33,6 +35,12 @@ libraryPathNew = "libraryNew"
 # if it doesnt exist, create new directory for storing the modified library
 def createDirectories():
   Path("./" + libraryPathNew).mkdir(parents=True, exist_ok=True)
+
+# create new file for 
+def createFiles():
+  newFile = open("./" + libraryPathNew + "/" + libraryCSVFileName, "w")
+  writer = csv.writer(newFile)
+  newFile.close()
 
 ###########
 # CSV files
@@ -67,8 +75,9 @@ def printMetaMessages(file):
 # running
 #########
 
-# create directories
+# create directories and files
 createDirectories()
+createFiles()
 
 # open a MIDI file
 readMIDIFile("A41emP.mid")
