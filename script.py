@@ -6,15 +6,15 @@
 # import libraries
 ##################
 
+# sys for command line arguments
+import sys
+
 # csv module for CSV
 import csv
 
 # mido module for MIDI
 from mido import MetaMessage
 from mido import MidiFile
-
-
-# TODO add arguments for command line
 
 ###########
 # CSV files
@@ -52,3 +52,6 @@ def printMetaMessages(file):
 
 # open a MIDI file
 readMIDIFile("A41emP.mid")
+
+# print the 1th argument of the command line
+print(sys.argv[1])
