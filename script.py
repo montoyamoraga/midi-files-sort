@@ -6,8 +6,11 @@
 # import libraries
 ##################
 
-# sys for command line arguments
+# sys module for command line arguments
 import sys
+
+# os for creating new directories and files
+from pathlib import Path
 
 # csv module for CSV
 import csv
@@ -15,6 +18,19 @@ import csv
 # mido module for MIDI
 from mido import MetaMessage
 from mido import MidiFile
+
+###################
+# default variables
+###################
+
+libraryPathOriginal = "library"
+libraryPathModified = "libraryNew"
+
+##############################
+# create files and directories
+##############################
+
+Path("./" + libraryPathModified).mkdir(parents=True, exist_ok=True)
 
 ###########
 # CSV files
