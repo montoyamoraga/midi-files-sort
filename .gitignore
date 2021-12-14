@@ -6,3 +6,7 @@ env/
 
 # midiLibrary project
 midiLibrary/
+
+# default files and directories
+library/
+libraryNew/
