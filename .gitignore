@@ -8,5 +8,5 @@ env/
 midiLibrary/
 
 # default files and directories
-library/
+libraryOriginal/
 libraryNew/
