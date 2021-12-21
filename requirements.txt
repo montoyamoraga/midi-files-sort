@@ -1,3 +1,5 @@
+# jupyerlab
+jupyterlab
 # for exporting as app
 pyinstaller
 # for MIDI reading / writing
