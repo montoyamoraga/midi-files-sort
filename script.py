@@ -63,9 +63,10 @@ def readMIDIFile(filename):
 
   return myFile
 
+# print the meta messages of it
 def printMetaMessages(file):
 
-  for i, track in enumerate(myFile.tracks):
+  for i, track in enumerate(file.tracks):
     print('Track {}: {}'.format(i, track.name))
     for msg in track:
         if msg.is_meta:
@@ -80,7 +81,10 @@ createDirectories()
 createFiles()
 
 # open a MIDI file
-readMIDIFile("A41emP.mid")
+myFile = readMIDIFile("A41emP.mid")
+
+# print meta messages
+printMetaMessages(myFile)
 
 # print the 1th argument of the command line
 print(sys.argv[1:])
