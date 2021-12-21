@@ -32,6 +32,7 @@ libraryPathNew = "libraryNew"
 libraryCSVFileName = "libraryNew.csv"
 
 # variable for storing the names of each MIDI file
+midiFilesNames = []
 midiFilesPaths = []
 
 ##############################
@@ -42,7 +43,7 @@ midiFilesPaths = []
 def createDirectories():
   Path("./" + libraryPathNew).mkdir(parents=True, exist_ok=True)
 
-# create new file for 
+# create new file with CSV list
 def createFiles():
   newFile = open("./" + libraryPathNew + "/" + libraryCSVFileName, "w")
   writer = csv.writer(newFile)
@@ -58,6 +59,13 @@ def readCSVFile(filename):
     for row in reader:
       print(', '.join(row))
 
+def createListMIDIFiles():
+  with open("./" + libraryPathNew + "/" + libraryCSVFileName, "w", newline="") as csvFile:
+    spamwriter = csv.writer(csvFile, delimiter = " ", quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    for i in range(len(midiFilesNames)):
+      spamwriter.writerow([midiFilesNames[i], midiFilesPaths[i]])
+
+
 ############
 # MIDI files
 ############
@@ -72,22 +80,9 @@ def findMIDIFiles():
     for filename in files:
       filepath = os.path.join(root, filename)
       # append if it is a filename
-      if filepath.endswith(".mid"):
+      if filepath.endswith(".mid") or filepath.endswith(".MID"):
+        midiFilesNames.append(os.path.splitext(os.path.basename(filepath))[0])
         midiFilesPaths.append(filepath)
-
-
-  # files = os.listdir(cwd + "/" +libraryPathOriginal + "/")
-  # for f in files:
-  #   if (os.path.isfile(f)):
-  #     print("this is a file")
-  #   else:
-  #     print("this is not a file")
-  #   print(f)
-  #   # if ()
-  #   # moreFiles = os.listdir("./" + libraryPathOriginal + "/" + f + "/")
-  
-  # # print(files)
-
 
 # open a MIDI file
 def readMIDIFile(filename):
@@ -115,8 +110,14 @@ createFiles()
 
 # find all MIDI files
 findMIDIFiles()
+
+# check the contents and length
 print(midiFilesPaths)
-print(len(midiFilesPaths))
+# print(midiFilesNames)
+# print(len(midiFilesPaths))
+#print(len(midiFilesNames))
+
+createListMIDIFiles()
 
 # open a MIDI file
 myFile = readMIDIFile("A41emP.mid")
