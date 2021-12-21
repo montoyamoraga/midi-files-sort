@@ -9,6 +9,9 @@
 # sys module for command line arguments
 import sys
 
+# os module for listing files and directories
+import os
+
 # os for creating new directories and files
 from pathlib import Path
 
@@ -23,10 +26,13 @@ from mido import MidiFile
 # default variables
 ###################
 
-libraryPathOriginal = "library"
+libraryPathOriginal = "libraryOriginal"
 libraryPathNew = "libraryNew"
 
 libraryCSVFileName = "libraryNew.csv"
+
+# variable for storing the names of each MIDI file
+midiFilesPaths = []
 
 ##############################
 # create files and directories
@@ -56,14 +62,41 @@ def readCSVFile(filename):
 # MIDI files
 ############
 
-# open MIDI file
+# find all MIDI files in libraryOriginal
+def findMIDIFiles():
+  
+  # get current working directory
+  cwd = os.getcwd()
+
+  for root, directories, files in os.walk(cwd + "/" +libraryPathOriginal + "/"):
+    for filename in files:
+      filepath = os.path.join(root, filename)
+      # append if it is a filename
+      if filepath.endswith(".mid"):
+        midiFilesPaths.append(filepath)
+
+
+  # files = os.listdir(cwd + "/" +libraryPathOriginal + "/")
+  # for f in files:
+  #   if (os.path.isfile(f)):
+  #     print("this is a file")
+  #   else:
+  #     print("this is not a file")
+  #   print(f)
+  #   # if ()
+  #   # moreFiles = os.listdir("./" + libraryPathOriginal + "/" + f + "/")
+  
+  # # print(files)
+
+
+# open a MIDI file
 def readMIDIFile(filename):
 
   myFile = MidiFile(filename)
 
   return myFile
 
-# print the meta messages of it
+# print the meta messages of MIDI file
 def printMetaMessages(file):
 
   for i, track in enumerate(file.tracks):
@@ -80,11 +113,16 @@ def printMetaMessages(file):
 createDirectories()
 createFiles()
 
+# find all MIDI files
+findMIDIFiles()
+print(midiFilesPaths)
+print(len(midiFilesPaths))
+
 # open a MIDI file
 myFile = readMIDIFile("A41emP.mid")
 
 # print meta messages
-printMetaMessages(myFile)
+# printMetaMessages(myFile)
 
 # print the 1th argument of the command line
-print(sys.argv[1:])
+# print(sys.argv[1:])
