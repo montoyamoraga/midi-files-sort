@@ -2,23 +2,23 @@
 # December 2021
 # runs on Python 3.x on Mac OS 12.0.1
 
-##################
-# import libraries
-##################
+################
+# import modules
+################
 
-# sys module for command line arguments
+# sys for command line arguments
 import sys
 
-# os module for listing files and directories
+# os for listing files and directories
 import os
 
-# os for creating new directories and files
+# Path for creating new directories and files
 from pathlib import Path
 
-# csv module for CSV
+# csv for CSV files
 import csv
 
-# mido module for MIDI
+# mido for MIDI files
 from mido import MetaMessage
 from mido import MidiFile
 
