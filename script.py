@@ -34,6 +34,11 @@ libraryPathNew = "libraryNew"
 
 libraryCSVFileName = "libraryNew.csv"
 
+libraryMetadataFilename = "All_Rolls"
+libraryMetadataFolder = "DOCUMENTATION"
+libraryMetadataExtensionOriginal = ".xls"
+libraryMetadataExtensionNew = ".csv"
+
 # variable for storing the names of each MIDI file
 midiFilesNames = []
 midiFilesPaths = []
@@ -71,6 +76,14 @@ def createListMIDIFiles():
 #################################
 # parse metadata from AllRolls.xls
 #################################
+
+def readLibraryMetadata():
+
+  # read Excel file with pandas
+  readXLSFile = pd.read_excel("./" + libraryPathOriginal + "/" + libraryMetadataFolder + "/" + libraryMetadataFilename + libraryMetadataExtensionOriginal)
+
+  # conver to CSV
+  readXLSFile.to_csv("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, index = None, header = True)
 
 ############
 # MIDI files
@@ -131,6 +144,9 @@ findMIDIFiles()
 
 # create CSV file with MIDI files
 createListMIDIFiles()
+
+# read metadata
+readLibraryMetadata()
 
 matchMIDIFiles()
 
