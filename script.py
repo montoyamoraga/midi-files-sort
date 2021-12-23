@@ -18,6 +18,9 @@ from pathlib import Path
 # csv for CSV files
 import csv
 
+# pandas for .xls to CSV
+import pandas as pd
+
 # mido for MIDI files
 from mido import MetaMessage
 from mido import MidiFile
@@ -65,6 +68,9 @@ def createListMIDIFiles():
     for i in range(len(midiFilesNames)):
       spamwriter.writerow([midiFilesNames[i], midiFilesPaths[i]])
 
+#################################
+# parse metadata from AllRolls.xls
+#################################
 
 ############
 # MIDI files
@@ -100,6 +106,12 @@ def printMetaMessages(file):
         if msg.is_meta:
           print(msg)
 
+def matchMIDIFiles():
+  # go through every MIDI file
+  for i in range(len(midiFilesNames)):
+    # check if the file is in the list
+    print(midiFilesNames[i])
+
 #########
 # running
 #########
@@ -112,12 +124,15 @@ createFiles()
 findMIDIFiles()
 
 # check the contents and length
-print(midiFilesPaths)
+# print(midiFilesPaths)
 # print(midiFilesNames)
 # print(len(midiFilesPaths))
 #print(len(midiFilesNames))
 
+# create CSV file with MIDI files
 createListMIDIFiles()
+
+matchMIDIFiles()
 
 # open a MIDI file
 myFile = readMIDIFile("A41emP.mid")
