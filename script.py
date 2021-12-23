@@ -43,6 +43,10 @@ libraryMetadataExtensionNew = ".csv"
 midiFilesNames = []
 midiFilesPaths = []
 
+# variable for storing a subset of MIDI files: only 1 word ones
+midiFilesShortNames = []
+midiFilesShortPaths = []
+
 ##############################
 # create files and directories
 ##############################
@@ -69,9 +73,9 @@ def readCSVFile(filename):
 
 def createListMIDIFiles():
   with open("./" + libraryPathNew + "/" + libraryCSVFileName, "w", newline="") as csvFile:
-    spamwriter = csv.writer(csvFile, delimiter = " ", quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    csvWriter = csv.writer(csvFile, delimiter = " ", quotechar='|', quoting=csv.QUOTE_MINIMAL)
     for i in range(len(midiFilesNames)):
-      spamwriter.writerow([midiFilesNames[i], midiFilesPaths[i]])
+      csvWriter.writerow([midiFilesNames[i], midiFilesPaths[i]])
 
 #################################
 # parse metadata from AllRolls.xls
@@ -100,8 +104,13 @@ def findMIDIFiles():
       filepath = os.path.join(root, filename)
       # append if it is a filename
       if filepath.endswith(".mid") or filepath.endswith(".MID"):
+        # append them to the list
         midiFilesNames.append(os.path.splitext(os.path.basename(filepath))[0])
         midiFilesPaths.append(filepath)
+        # append to the shorter list if they are only one word
+        if (len(os.path.splitext(os.path.basename(filepath))[0].split()) == 1):
+          midiFilesShortNames.append(os.path.splitext(os.path.basename(filepath))[0])
+          midiFilesShortPaths.append(filepath)
 
 # open a MIDI file
 def readMIDIFile(filename):
@@ -120,10 +129,10 @@ def printMetaMessages(file):
           print(msg)
 
 def matchMIDIFiles():
-  # go through every MIDI file
-  for i in range(len(midiFilesNames)):
+  # go through every MIDI file with 1 word
+  for i in range(len(midiFilesShortNames)):
     # check if the file is in the list
-    print(midiFilesNames[i])
+    print(midiFilesShortNames[i])
 
 #########
 # running
