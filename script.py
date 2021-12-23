@@ -31,6 +31,7 @@ from mido import MidiFile
 
 libraryPathOriginal = "libraryOriginal"
 libraryPathNew = "libraryNew"
+libraryPathFiles = "files"
 
 libraryCSVFileName = "libraryNew.csv"
 
@@ -53,7 +54,8 @@ midiFilesShortPaths = []
 
 # if it doesnt exist, create new directory for storing the modified library
 def createDirectories():
-  Path("./" + libraryPathNew).mkdir(parents=True, exist_ok=True)
+
+  Path("./" + libraryPathNew + "/" + libraryPathFiles).mkdir(parents=True, exist_ok=True)
 
 # create new file with CSV list
 def createFiles():
