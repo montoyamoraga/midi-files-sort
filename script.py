@@ -43,6 +43,8 @@ libraryMetadataFolder = "DOCUMENTATION"
 libraryMetadataExtensionOriginal = ".xls"
 libraryMetadataExtensionNew = ".csv"
 
+libraryRollsSuffixes = ["emR", "emP"]
+
 # variable for storing the names of each MIDI file
 midiFilesNames = []
 midiFilesPaths = []
@@ -148,10 +150,10 @@ def matchMIDIFiles():
     # check if the file is in the All_Rolls.csv file
     print(midiFilesShortNames[i])
 
-  # read All_Rolls.csv
-  AllRolls = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=1, delimiter= ",")
-  print(AllRolls)
-    
+  # read All_Rolls.csv, retrieve column 5 with filenames
+  AllRolls = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= ",")
+  
+  
 
 #########
 # running
