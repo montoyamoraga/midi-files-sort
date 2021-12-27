@@ -144,16 +144,36 @@ def copyMIDIFiles():
   for i in range(len(midiPaths)):
     shutil.copy(midiPaths[i], './' + libraryPathNew + "/" + libraryPathFiles)
 
+# check if any of the copied files matches with an entry on AllRolls.csv
 def matchMIDIFiles():
-  # go through every MIDI file with 1 word
-  for i in range(len(midiFilesShortNames)):
-    # check if the file is in the All_Rolls.csv file
-    print(midiFilesShortNames[i])
 
   # read All_Rolls.csv, retrieve column 5 with filenames
   AllRolls = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= ",")
-  
-  
+
+  print(AllRolls)
+
+  matches = 0
+
+  # go through every MIDI file with 1 word
+  for i in range(len(midiFilesShortNames)):
+
+    # retrieve filename
+    name = midiFilesShortNames[i]
+
+    # check if the filename ends on the suffixes emR or emP
+    if name[-3:] in libraryRollsSuffixes:
+      # retrieve the name without suffix
+      name = name[:-3]
+
+    # go through filenames in All_Rolls
+    for i in range(len(AllRolls)):
+
+      # check if there is a match
+      if (AllRolls[i] == name):
+        matches = matches + 1
+        print(AllRolls[i])
+
+  print(matches)
 
 #########
 # running
