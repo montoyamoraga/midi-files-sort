@@ -13,11 +13,13 @@ A commisioned project by Aarón Montoya-Moraga.
 
 This script runs on Python 3.
 
-To install,
+To install all required dependencies, run
 
 ```bash
 pip install -r requirements.txt
 ```
+
+Locate the original library on a new folder called libraryOriginal/
 
 ## License
 
