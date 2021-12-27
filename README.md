@@ -6,10 +6,8 @@ A commisioned project by Aarón Montoya-Moraga.
 
 ## Files
 
-* [script.py](./script.py): main file, Python 3 script.
-
-
-It is also being ported to  to midiSort.ipynb
+* [midiSort.py](./midiSort.py): main file, Python 3 script.
+* [midiSort.ipynb](./midiSort.ipynb): work-in-progress port to Jupyter Notebook, made to run on Google Colab.
 
 ## Installation
 
