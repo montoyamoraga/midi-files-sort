@@ -19,7 +19,7 @@ To install all required dependencies, run
 pip install -r requirements.txt
 ```
 
-Locate the original library on a new folder called libraryOriginal/
+Place the original library on a new folder called libraryOriginal/
 
 ## License
 
