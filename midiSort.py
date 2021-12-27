@@ -151,7 +151,13 @@ def matchMIDIFiles():
 
   # column 0 for title
   AllRollsTitles = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=0, delimiter= ",")
-  
+
+  # column 1 for composer
+  AllRollsComposer = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=1, delimiter= ",")
+
+  # column 2 for pianist
+  AllRollsPianist = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=2, delimiter= ",")
+
   # column 5 for filenames
   AllRollsNames = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= ",")
 
