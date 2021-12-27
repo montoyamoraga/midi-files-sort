@@ -147,10 +147,13 @@ def copyMIDIFiles():
 # check if any of the copied files matches with an entry on AllRolls.csv
 def matchMIDIFiles():
 
-  # read All_Rolls.csv, retrieve column 5 with filenames
-  AllRolls = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= ",")
+  # read All_Rolls.csv, retrieve these columns:
 
-  print(AllRolls)
+  # column 0 for title
+  AllRollsTitles = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=0, delimiter= ",")
+  
+  # column 5 for filenames
+  AllRollsNames = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= ",")
 
   matches = 0
 
@@ -166,12 +169,14 @@ def matchMIDIFiles():
       name = name[:-3]
 
     # go through filenames in All_Rolls
-    for i in range(len(AllRolls)):
+    for i in range(len(AllRollsNames)):
 
       # check if there is a match
-      if (AllRolls[i] == name):
+      if (AllRollsNames[i] == name):
+        # add to counter
         matches = matches + 1
-        print(AllRolls[i])
+
+        # print(AllRollsTitles[i], AllRollsNames[i])
 
   print(matches)
 
