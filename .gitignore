@@ -4,6 +4,9 @@
 # Jupyter
 .ipynb_checkpoints
 
+# MIDI
+*.mid
+
 # Python virtual environment
 env/
 
