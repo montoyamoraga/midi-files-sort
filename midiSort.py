@@ -216,7 +216,7 @@ copyMIDIFiles()
 matchMIDIFiles()
 
 # open a MIDI file
-myFile = readMIDIFile("A41emP.mid")
+# myFile = readMIDIFile("A41emP.mid")
 
 # print meta messages
 # printMetaMessages(myFile)
