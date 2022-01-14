@@ -184,7 +184,11 @@ def matchMIDIFiles():
   # column 5 for filenames
   AllRollsNames = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= ",")
 
+  print(AllRollsNames)
+
   matches = 0
+
+  print(len(midiFilesShortNames))
 
   # go through every MIDI file with 1 word
   for i in range(len(midiFilesShortNames)):
@@ -207,6 +211,7 @@ def matchMIDIFiles():
 
         # print(AllRollsTitles[i], AllRollsNames[i])
 
+  print(len(AllRollsNames))
   print(matches)
 
 #########
