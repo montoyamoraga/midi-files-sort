@@ -206,7 +206,7 @@ def sortMIDIFiles():
    # column 3 for manufacturer
   AllRollsManufacturers = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=3, delimiter= "\t")
 
-  # column 4 for manufacturer
+  # column 4 for roll numbers
   AllRollsNumbers = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=4, delimiter= "\t")
 
   # column 5 for filename
@@ -235,17 +235,17 @@ def sortMIDIFiles():
         cwd = os.getcwd()
 
         for j in range(len(libraryPathRolls)):
-          # print(AllRollsManufacturers[i], libraryPathRolls[j])
           if AllRollsManufacturers[i] == libraryPathRolls[j]:
+            # create path for album
+            print("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsManufacturers[i] + "/" + AllRollsPianists[i])
+            Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsManufacturers[i] + "/" + AllRollsPianists[i]).mkdir(parents=True, exist_ok=True)
             try:
-              shutil.copy( cwd+ "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j])
+              # shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i])
+               shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i] + "/" + AllRollsTitles[i] + ".mid")
             except:
               print("file not found: " + AllRollsNames[i])
 
         # print(AllRollsTitles[i], AllRollsComposers[i], AllRollsPianists[i], AllRollsManufacturers[i], AllRollsNumbers[i], AllRollsNames[i])
-
-
-
         # print(AllRollsTitles[i], AllRollsNames[i])
 
   print(len(AllRollsNames))
