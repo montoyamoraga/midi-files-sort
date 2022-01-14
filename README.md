@@ -2,7 +2,7 @@
 
 ## About
 
-A commisioned project by Aarón Montoya-Moraga.
+A commisioned project by Aarón Montoya-Moraga and Benjamín Rámila.
 
 ## Repository contents
 * [assets/](./assets): graphic assets for the project
