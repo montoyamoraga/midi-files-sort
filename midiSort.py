@@ -240,7 +240,7 @@ matchMIDIFiles()
 
 # open a MIDI file
 # myFile = readMIDIFile("./libraryDummy/A41emP.mid")
-myFile = readMIDIFile("./libraryDummy/01 Moon River.mid")
+# myFile = readMIDIFile("./libraryDummy/01 Moon River.mid")
 
 # newTitle = MetaMessage('text', text="Title Something blabla", time=0)
 # newArtist = MetaMessage('text', text="Artist WHATEVER", time=0)
@@ -260,9 +260,9 @@ myFile = readMIDIFile("./libraryDummy/01 Moon River.mid")
 # myFile.append(newTitle)
 
 # print meta messages
-printMetaMessages(myFile)
+# printMetaMessages(myFile)
 
-myFile.save(myFile.filename)
+# myFile.save(myFile.filename)
 
 # print the 1th argument of the command line
 # print(sys.argv[1:])
