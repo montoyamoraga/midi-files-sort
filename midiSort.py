@@ -31,12 +31,32 @@ import pandas as pd
 from mido import MetaMessage
 from mido import MidiFile
 
+################################
+# retrieve current date and time
+################################
+
+def getCurrentDate():
+  # retrieve system date
+  now = datetime.now()
+
+  # parse
+  year = now.strftime("%Y")
+  month = now.strftime("%m")
+  day = now.strftime("%d")
+  hour =  now.strftime("%H")
+  minute =  now.strftime("%M")
+  second = now.strftime("%S")
+
+  # return YYYYMMDD-HHMMSS
+  currentDate = year + month + day + "-" + hour + minute + second
+  return currentDate
+
 ###################
 # default variables
 ###################
 
 libraryPathOriginal = "libraryOriginal"
-libraryPathNew = "libraryNew"
+libraryPathNew = "library" + getCurrentDate()
 libraryPathFiles = "files"
 
 libraryCSVFileName = "libraryNew.csv"
@@ -55,20 +75,6 @@ midiFilesPaths = []
 # variable for storing a subset of MIDI files: only 1 word ones
 midiFilesShortNames = []
 midiFilesShortPaths = []
-
-################################
-# retrieve current date and time
-################################
-
-def getCurrentDate():
-  now = datetime.now()
-  year = now.strftime("%Y")
-  month = now.strftime("%m")
-  day = now.strftime("%d")
-  hour =  now.strftime("%H")
-  minute =  now.strftime("%M")
-  second = now.strftime("%S")
-  print(year, month, day, hour, minute, second)
 
 ##############################
 # create files and directories
@@ -206,8 +212,6 @@ def matchMIDIFiles():
 #########
 # running
 #########
-
-getCurrentDate()
 
 # create directories and files
 createDirectories()
