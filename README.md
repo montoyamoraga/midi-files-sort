@@ -20,9 +20,10 @@ To install all required modules, run:
 pip install -r requirements.txt
 ```
 
-## Folder structure
+## Folder setup
 
-Place the original library on a new folder called libraryOriginal/
+* Place the original library on a new folder called libraryOriginal/
+
 
 ## Result
 
