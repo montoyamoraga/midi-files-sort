@@ -1,9 +1,9 @@
 # jupyterlab for Google Colab
-jupyterlab
+# jupyterlab
 # pandas for Excel to CSV conversion
 pandas
 # for exporting as app
-pyinstaller
+# pyinstaller
 # for reading and writing MIDI files
 mido
 # for Excel to CSV conversion
