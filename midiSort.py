@@ -212,8 +212,6 @@ def sortMIDIFiles():
   # column 5 for filename
   AllRollsNames = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= "\t")
 
-  matches = 0
-
   print(len(midiFilesShortNames))
 
   # go through every MIDI file with 1 word
@@ -232,8 +230,6 @@ def sortMIDIFiles():
 
       # check if there is a match
       if (AllRollsNames[i] == name):
-        # add to counter
-        matches = matches + 1
 
         # get current working directory
         cwd = os.getcwd()
@@ -253,7 +249,6 @@ def sortMIDIFiles():
         # print(AllRollsTitles[i], AllRollsNames[i])
 
   print(len(AllRollsNames))
-  print(matches)
 
 #########
 # running
