@@ -28,8 +28,13 @@ pip install -r requirements.txt
 
 * Place the original library on a new folder called libraryOriginal/
 
+## Running the script
+
+TODO
 
 ## Result
+
+TODO: update to latest version
 
 The script generates the folder libraryYYYMMDD-HHMMSS/, and inside of it:
 
