@@ -237,7 +237,6 @@ def sortMIDIFiles():
         for j in range(len(libraryPathRolls)):
           if AllRollsManufacturers[i] == libraryPathRolls[j]:
             # create path for album
-            print("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsManufacturers[i] + "/" + AllRollsPianists[i])
             Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsManufacturers[i] + "/" + AllRollsPianists[i]).mkdir(parents=True, exist_ok=True)
             try:
               # shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i])
@@ -249,6 +248,18 @@ def sortMIDIFiles():
         # print(AllRollsTitles[i], AllRollsNames[i])
 
   print(len(AllRollsNames))
+
+######
+
+def addImages():
+  # get current working directory
+  cwd = os.getcwd()
+
+  # for root, directories, files in os.walk(cwd + "/" +libraryPathSorted + "/" + "Ampico" + "/"):
+  #   for directory in directories:
+  #     print(directory)
+
+######
 
 #########
 # running
@@ -278,6 +289,9 @@ copyMIDIFiles()
 
 # sort the MIDI files into different folders
 sortMIDIFiles()
+
+# add images to folders
+addImages()
 
 # print the 1th argument of the command line
 # print(sys.argv[1:])
