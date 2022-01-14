@@ -216,10 +216,30 @@ copyMIDIFiles()
 matchMIDIFiles()
 
 # open a MIDI file
-# myFile = readMIDIFile("A41emP.mid")
+# myFile = readMIDIFile("./libraryDummy/A41emP.mid")
+myFile = readMIDIFile("./libraryDummy/01 Moon River.mid")
+
+# newTitle = MetaMessage('text', text="Title Something blabla", time=0)
+# newArtist = MetaMessage('text', text="Artist WHATEVER", time=0)
+# newAlbum = MetaMessage('text', text="Album MAYBE", time=0)
+
+# print(newTitle.dict()['type'])
+
+# for i, track in enumerate(myFile.tracks):
+  # myFile.tracks[i].append(newTitle)
+  # myFile.tracks[i].append(newArtist)
+  # myFile.tracks[i].append(newAlbum)
+  # myFile.tracks[i].insert(myFile.tracks[i].index('end_of_track'), newTitle)
+  # myFile.tracks[i].insert(10, newArtist)
+  # myFile.tracks[i].insert(len(myFile.tracks[i]) - 2, newArtist)
+  # myFile.tracks[i].insert(len(myFile.tracks[i]) - 2, newAlbum)
+
+# myFile.append(newTitle)
 
 # print meta messages
-# printMetaMessages(myFile)
+printMetaMessages(myFile)
+
+myFile.save(myFile.filename)
 
 # print the 1th argument of the command line
 # print(sys.argv[1:])
