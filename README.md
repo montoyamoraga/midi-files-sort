@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ## Result
 
-The script generates the folder libraryNew/, and inside of it:
+The script generates the folder libraryYYYMMDD-HHMMSS/, and inside of it:
 
 * All_Rolls.csv: the file from libraryOriginal/ converted to CSV
 * files/: all MIDI files with the new metadata from All_Rolls.csv
