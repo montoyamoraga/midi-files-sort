@@ -57,7 +57,10 @@ def getCurrentDate():
 
 libraryPathOriginal = "libraryOriginal"
 libraryPathNew = "library" + getCurrentDate()
-libraryPathFiles = "files"
+libraryPathFiles = "filesRaw"
+
+libraryPathWithSoft = "withSoft"
+libraryPathWithoutSoft = "withoutSoft"
 
 libraryCSVFileName = "libraryNew.csv"
 
@@ -66,7 +69,7 @@ libraryMetadataFolder = "DOCUMENTATION"
 libraryMetadataExtensionOriginal = ".xls"
 libraryMetadataExtensionNew = ".csv"
 
-libraryRollsSuffixes = ["emR", "emP"]
+libraryRollsSuffixes = ["emP", "emR"]
 
 # variable for storing the names of each MIDI file
 midiFilesNames = []
@@ -84,6 +87,10 @@ midiFilesShortPaths = []
 def createDirectories():
 
   Path("./" + libraryPathNew + "/" + libraryPathFiles).mkdir(parents=True, exist_ok=True)
+
+  Path("./" + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithSoft).mkdir(parents=True, exist_ok=True)
+
+  Path("./" + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithoutSoft).mkdir(parents=True, exist_ok=True)
 
 # create new file with CSV list
 def createFiles():
@@ -165,7 +172,11 @@ def copyMIDIFiles():
   midiPaths = readCSVFile("./" + libraryPathNew + "/" + libraryCSVFileName, column=1, delimiter=" ")
   # copy them to the new library
   for i in range(len(midiPaths)):
-    shutil.copy(midiPaths[i], './' + libraryPathNew + "/" + libraryPathFiles)
+    # sort them between with and without soft pedal, according to suffix
+    if midiPaths[i][len(midiPaths[i])-7:-4] == "emP":
+      shutil.copy(midiPaths[i], './' + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithSoft)
+    elif midiPaths[i][len(midiPaths[i])-7:-4] == "emR":
+      shutil.copy(midiPaths[i], './' + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithoutSoft)
 
 # check if any of the copied files matches with an entry on AllRolls.csv
 def matchMIDIFiles():
@@ -245,29 +256,6 @@ matchMIDIFiles()
 
 # open a MIDI file
 # myFile = readMIDIFile("./libraryDummy/A41emP.mid")
-# myFile = readMIDIFile("./libraryDummy/01 Moon River.mid")
-
-# newTitle = MetaMessage('text', text="Title Something blabla", time=0)
-# newArtist = MetaMessage('text', text="Artist WHATEVER", time=0)
-# newAlbum = MetaMessage('text', text="Album MAYBE", time=0)
-
-# print(newTitle.dict()['type'])
-
-# for i, track in enumerate(myFile.tracks):
-  # myFile.tracks[i].append(newTitle)
-  # myFile.tracks[i].append(newArtist)
-  # myFile.tracks[i].append(newAlbum)
-  # myFile.tracks[i].insert(myFile.tracks[i].index('end_of_track'), newTitle)
-  # myFile.tracks[i].insert(10, newArtist)
-  # myFile.tracks[i].insert(len(myFile.tracks[i]) - 2, newArtist)
-  # myFile.tracks[i].insert(len(myFile.tracks[i]) - 2, newAlbum)
-
-# myFile.append(newTitle)
-
-# print meta messages
-# printMetaMessages(myFile)
-
-# myFile.save(myFile.filename)
 
 # print the 1th argument of the command line
 # print(sys.argv[1:])
