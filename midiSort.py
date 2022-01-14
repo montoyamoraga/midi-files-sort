@@ -65,7 +65,7 @@ libraryPathWithSoft = "withSoft"
 libraryPathWithoutSoft = "withoutSoft"
 
 # artists are each manufacturer of the rolls
-libraryPathArtists = ["Ampico", "Duo-Art", "Welte-T-100", "Welte-Licensee"]
+libraryPathRolls = ["Ampico", "Duo-Art", "Welte-T-100", "Welte-Licensee"]
 
 libraryCSVFileName = "libraryNew.csv"
 
@@ -100,8 +100,8 @@ def createDirectories():
   # create folder for sorted files
   Path("./" + libraryPathNew + "/" + libraryPathSorted).mkdir(parents=True, exist_ok=True)
   # create a subfolder for each artist / manufacturer
-  for i in range(len(libraryPathArtists)):
-    Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathArtists[i]).mkdir(parents=True, exist_ok=True)
+  for i in range(len(libraryPathRolls)):
+    Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[i]).mkdir(parents=True, exist_ok=True)
 
 # create new file with CSV list
 def createFiles():
@@ -190,7 +190,7 @@ def copyMIDIFiles():
       shutil.copy(midiPaths[i], './' + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithoutSoft)
 
 # check if any of the copied files matches with an entry on AllRolls.csv
-def matchMIDIFiles():
+def sortMIDIFiles():
 
   # read All_Rolls.csv, retrieve these columns:
 
@@ -198,15 +198,19 @@ def matchMIDIFiles():
   AllRollsTitles = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=0, delimiter= "\t")
 
   # column 1 for composer
-  AllRollsComposer = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=1, delimiter= "\t")
+  AllRollsComposers = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=1, delimiter= "\t")
 
   # column 2 for pianist
-  AllRollsPianist = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=2, delimiter= "\t")
+  AllRollsPianists = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=2, delimiter= "\t")
 
-  # column 5 for filenames
+   # column 3 for manufacturer
+  AllRollsManufacturers = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=3, delimiter= "\t")
+
+  # column 4 for manufacturer
+  AllRollsNumbers = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=4, delimiter= "\t")
+
+  # column 5 for filename
   AllRollsNames = readCSVFile("./" + libraryPathNew + "/" + libraryMetadataFilename + libraryMetadataExtensionNew, column=5, delimiter= "\t")
-
-  print(AllRollsNames)
 
   matches = 0
 
@@ -230,6 +234,21 @@ def matchMIDIFiles():
       if (AllRollsNames[i] == name):
         # add to counter
         matches = matches + 1
+
+        # get current working directory
+        cwd = os.getcwd()
+
+        for j in range(len(libraryPathRolls)):
+          # print(AllRollsManufacturers[i], libraryPathRolls[j])
+          if AllRollsManufacturers[i] == libraryPathRolls[j]:
+            try:
+              shutil.copy( cwd+ "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j])
+            except:
+              print("file not found: " + AllRollsNames[i])
+
+        # print(AllRollsTitles[i], AllRollsComposers[i], AllRollsPianists[i], AllRollsManufacturers[i], AllRollsNumbers[i], AllRollsNames[i])
+
+
 
         # print(AllRollsTitles[i], AllRollsNames[i])
 
@@ -262,11 +281,8 @@ readLibraryMetadata()
 # copy MIDI files from original to new
 copyMIDIFiles()
 
-# see if there is a match in the MIDI files and the All_Rolls.csv file
-matchMIDIFiles()
-
-# open a MIDI file
-# myFile = readMIDIFile("./libraryDummy/A41emP.mid")
+# sort the MIDI files into different folders
+sortMIDIFiles()
 
 # print the 1th argument of the command line
 # print(sys.argv[1:])
