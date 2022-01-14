@@ -59,8 +59,13 @@ libraryPathOriginal = "libraryOriginal"
 libraryPathNew = "library" + getCurrentDate()
 libraryPathFiles = "filesRaw"
 
+libraryPathSorted = "filesSorted"
+
 libraryPathWithSoft = "withSoft"
 libraryPathWithoutSoft = "withoutSoft"
+
+# artists are each manufacturer of the rolls
+libraryPathArtists = ["Ampico", "Duo-Art", "Welte-T-100", "Welte-Licensee"]
 
 libraryCSVFileName = "libraryNew.csv"
 
@@ -86,11 +91,17 @@ midiFilesShortPaths = []
 # if it doesnt exist, create new directory for storing the modified library
 def createDirectories():
 
+  # create folder for raw original files
   Path("./" + libraryPathNew + "/" + libraryPathFiles).mkdir(parents=True, exist_ok=True)
-
+  # create subfolders for with and without softpedal
   Path("./" + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithSoft).mkdir(parents=True, exist_ok=True)
-
   Path("./" + libraryPathNew + "/" + libraryPathFiles + "/" + libraryPathWithoutSoft).mkdir(parents=True, exist_ok=True)
+
+  # create folder for sorted files
+  Path("./" + libraryPathNew + "/" + libraryPathSorted).mkdir(parents=True, exist_ok=True)
+  # create a subfolder for each artist / manufacturer
+  for i in range(len(libraryPathArtists)):
+    Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathArtists[i]).mkdir(parents=True, exist_ok=True)
 
 # create new file with CSV list
 def createFiles():
