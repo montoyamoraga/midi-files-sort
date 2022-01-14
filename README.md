@@ -5,7 +5,9 @@
 A commisioned project by Aarón Montoya-Moraga.
 
 ## Repository contents
-
+* [assets/](./assets): graphic assets for the project
+  * ampico.jpg: By Daderot - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=29195477
+  * duo-art.jpg: By sguastevi - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=42104088
 * [midiSort.py](./midiSort.py): main file, Python 3 script.
 * [midiSort.ipynb](./midiSort.ipynb): work-in-progress port to Jupyter Notebook, made to run on Google Colab.
 * [requirements.txt](./requirements.txt): file for installing Python 3 dependencies.
