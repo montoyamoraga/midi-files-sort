@@ -30,11 +30,24 @@ pip install -r requirements.txt
 
 ## Running the script
 
-TODO
+notas cliente 14 febrero:
 
-notes:
+* cliente solamente pudo abrir 2 carpetas: la ventisense y la 100.
+* las otras dos, duoalto y lampico, no pudo cargarlas, por formato de archivo.
+* hay 4 columnas de info en el ipad, pero cliente ve 3, y de esas dejamos la mas importante fuera.
+* nombre de la canción está bien
+* la info del artista la pusimos en el álbum
+* la info del álbum, que cliente dice que es compositor, la pusimos como tipo piano ventisense etc.
+* la info del tipo de piano se podría poner en genre, que es la columna vacía
+* segundo mensaje
+* donde deberia estar el artista, esta en el album
+* el album deberia ser donde esta el compositor
+* en genre, que esta vacio, deberian estar los tipos de piano
+* con eso, album seria compositor
 
-more notes
+
+FUTURO:
+
 
 ## Result
 
