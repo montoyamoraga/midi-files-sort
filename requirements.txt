@@ -6,5 +6,7 @@ pandas
 # pyinstaller
 # for reading and writing MIDI files
 mido
-# for Excel to CSV conversion
+# for xls to CSV conversion
 xlrd
+# for xlsx to CSV conversion
+openpyxl
