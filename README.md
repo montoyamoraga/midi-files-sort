@@ -32,8 +32,8 @@ pip install -r requirements.txt
 
 notas cliente 14 febrero:
 
-* cliente solamente pudo abrir 2 carpetas: la ventisense y la 100.
-* las otras dos, duoalto y lampico, no pudo cargarlas, por formato de archivo.
+* cliente solamente pudo abrir 2 carpetas: la welte-licensee y la welte-t-100.
+* las otras dos, ampico y duo-art, no pudo cargarlas, por formato de archivo.
 * hay 4 columnas de info en el ipad, pero cliente ve 3, y de esas dejamos la mas importante fuera.
 * nombre de la canción está bien
 * la info del artista la pusimos en el álbum
