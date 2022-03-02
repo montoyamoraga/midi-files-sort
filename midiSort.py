@@ -69,10 +69,14 @@ libraryPathRolls = ["Ampico", "Duo-Art", "Welte-T-100", "Welte-Licensee"]
 
 libraryCSVFileName = "libraryNew.csv"
 
-libraryMetadataFilename = "All_Rolls"
 libraryMetadataFolder = "DOCUMENTATION"
-libraryMetadataExtensionOriginal = ".xls"
 libraryMetadataExtensionNew = ".csv"
+# OLD
+# libraryMetadataFilename = "All_Rolls"
+# libraryMetadataExtensionOriginal = ".xls"
+# NEW
+libraryMetadataFilename = "All_Rolls_modified"
+libraryMetadataExtensionOriginal = ".xlsx"
 
 libraryRollsSuffixes = ["emP", "emR"]
 
@@ -99,9 +103,6 @@ def createDirectories():
 
   # create folder for sorted files
   Path("./" + libraryPathNew + "/" + libraryPathSorted).mkdir(parents=True, exist_ok=True)
-  # create a subfolder for each artist / manufacturer
-  for i in range(len(libraryPathRolls)):
-    Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[i]).mkdir(parents=True, exist_ok=True)
 
 # create new file with CSV list
 def createFiles():
@@ -214,6 +215,18 @@ def sortMIDIFiles():
 
   print(len(midiFilesShortNames))
 
+  # create a subfolder for each artist / manufacturer
+  # OLD, iterate over libraryPathRolls
+  # for i in range(len(libraryPathRolls)):
+  # NEW iterate over composers
+  for i in range(len(AllRollsComposers)):
+
+    # OLD
+    # Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[i]).mkdir(parents=True, exist_ok=True)
+    # NEW
+    Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsComposers[i]).mkdir(parents=True, exist_ok=True)
+
+
   # go through every MIDI file with 1 word
   for i in range(len(midiFilesShortNames)):
 
@@ -236,8 +249,11 @@ def sortMIDIFiles():
 
         for j in range(len(libraryPathRolls)):
           if AllRollsManufacturers[i] == libraryPathRolls[j]:
-            # create path for album
+            # create path for album OLD
             Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsManufacturers[i] + "/" + AllRollsPianists[i]).mkdir(parents=True, exist_ok=True)
+            # create path for album NEW
+            Path("./" + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsComposers[i] + "/" + AllRollsPianists[i]).mkdir(parents=True, exist_ok=True)
+
             try:
               # shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i])
                shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i] + "/" + AllRollsTitles[i] + ".mid")
