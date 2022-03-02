@@ -45,10 +45,6 @@ notas cliente 14 febrero:
 * en genre, que esta vacio, deberian estar los tipos de piano
 * con eso, album seria compositor
 
-
-FUTURO:
-
-
 ## Result
 
 TODO: update to latest version
