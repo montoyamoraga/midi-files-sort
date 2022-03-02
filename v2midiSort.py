@@ -1,5 +1,5 @@
-# Python script for sorting MIDI files on a database
-# Februrary 2021
+# Python script for TODO
+# December 2021
 # runs on Python 3.x on Mac OS 12.0.1
 
 ################
