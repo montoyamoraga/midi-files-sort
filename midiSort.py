@@ -292,6 +292,3 @@ sortMIDIFiles()
 
 # add images to folders
 addImages()
-
-# print the 1th argument of the command line
-# print(sys.argv[1:])
