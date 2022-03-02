@@ -14,6 +14,12 @@ A commisioned project by Aarón Montoya-Moraga and Benjamín Rámila.
 * [midiSort.ipynb](./midiSort.ipynb): work-in-progress port to Jupyter Notebook, made to run on Google Colab.
 * [requirements.txt](./requirements.txt): file for installing Python 3 dependencies.
 
+## Database polishing
+
+I went through all of the database
+Replaced double quotes "" with parenthesis ()
+Replaced ampersand & and slash / with dash -
+
 ## Software installation
 
 This script runs on Python 3. I recommend using a virtual environment for the dependencies.
@@ -37,7 +43,7 @@ notas cliente 14 febrero:
 * hay 4 columnas de info en el ipad, pero cliente ve 3, y de esas dejamos la mas importante fuera.
 * nombre de la canción está bien
 * la info del artista la pusimos en el álbum
-* la info del álbum, que cliente dice que es compositor, la pusimos como tipo piano ventisense etc.
+* la info de álbum, cliente dice que debe ser compositor, la pusimos como tipo piano 
 * la info del tipo de piano se podría poner en genre, que es la columna vacía
 * segundo mensaje
 * donde deberia estar el artista, esta en el album
