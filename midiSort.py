@@ -256,11 +256,10 @@ def sortMIDIFiles():
 
             try:
               # shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i])
-               shutil.copy(cwd + "/" + libraryPathNew +"/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + libraryPathRolls[j] + "/" + AllRollsPianists[i] + "/" + AllRollsTitles[i] + ".mid")
+               shutil.copy(cwd + "/" + libraryPathNew + "/" + "filesRaw" + "/" + "withoutSoft" + "/" + AllRollsNames[i] + "emR" ".mid", './' + libraryPathNew + "/" + libraryPathSorted + "/" + AllRollsComposers[i] + "/" + AllRollsPianists[i] + "/" + AllRollsTitles[i] + ".mid")
             except:
               print("file not found: " + AllRollsNames[i])
 
-        # print(AllRollsTitles[i], AllRollsComposers[i], AllRollsPianists[i], AllRollsManufacturers[i], AllRollsNumbers[i], AllRollsNames[i])
         # print(AllRollsTitles[i], AllRollsNames[i])
 
   print(len(AllRollsNames))
