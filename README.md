@@ -52,6 +52,11 @@ notas cliente 14 febrero:
 * en genre, que esta vacio, deberian estar los tipos de piano
 * con eso, album seria compositor
 
+## Last version 2022 March 03
+
+* the code is working, after All_Rolls_modified.xlsx was created with typo corrections.
+* there is still one redundant for loop, so after the library is sorted, there are still folders for each piano roll maker, "ampico, duo-art, welte-t-100, welte-licensee", that need to be deleted, that's it!
+
 ## Result
 
 TODO: update to latest version
